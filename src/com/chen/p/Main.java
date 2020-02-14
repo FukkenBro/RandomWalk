@@ -23,8 +23,6 @@ public class Main {
     public static HashSet<Node> layout = new HashSet<>();
 
     static {
-
-
         layout.add(new Node(-1, 3, false, false, false, true));
         layout.add(new Node(-2, 2, true, false, false, false));
         layout.add(new Node(-1, 2, true, true, true, true));
@@ -47,15 +45,15 @@ public class Main {
                 System.out.println("Particle 1 " + Arrays.toString(particle1.getLoc()));
                 particle2 = step(particle2);
                 System.out.println("Particle 2 " + Arrays.toString(particle2.getLoc()));
-                if (Arrays.equals(particle1.getLoc(), particle2.getLoc())&&i==N) {
+                if (Arrays.equals(particle1.getLoc(), particle2.getLoc()) && i == N) {
                     gameOverCount++;
                     break;
                 }
                 System.out.println(" ");
             }
         }
-        double p =  (gameOverCount / ITERATIONS)*100;
-        System.out.println("Chance to collide ON steps #"+N+" is "+p+"%");
+        double p = (gameOverCount / ITERATIONS) * 100;
+        System.out.println("Chance to collide ON steps #" + N + " is " + p + "%");
     }
 
     public static Point step(Point particle) {
