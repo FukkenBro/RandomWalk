@@ -17,8 +17,8 @@ public class Main {
      * Диаграмма к данному решению https://prnt.sc/r232t5
      **/
 
-    public static final int ITERATIONS = 100000;
-    public static final int N = 3;
+    public static final int ITERATIONS = 1000;
+    public static final int N = 5;
     public static final Random RANDOM = new Random();
     public static HashSet<Node> layout = new HashSet<>();
 
@@ -35,25 +35,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Point particle1 = new Point(-1, 2);
-        Point particle2 = new Point(0, 1);
-
         double gameOverCount = 0;
         for (int j = 0; j < ITERATIONS; j++) {
+
+            Point particle1 = new Point(-1, 2);
+            Point particle2 = new Point(0, 1);
+
             for (int i = 1; i <= N; i++) {
+
                 particle1 = step(particle1);
                 System.out.println("Particle 1 " + Arrays.toString(particle1.getLoc()));
+
                 particle2 = step(particle2);
                 System.out.println("Particle 2 " + Arrays.toString(particle2.getLoc()));
-                if (Arrays.equals(particle1.getLoc(), particle2.getLoc()) && i == N) {
-                    gameOverCount++;
+
+                if (Arrays.equals(particle1.getLoc(), particle2.getLoc())) {
+                    if (i == N) {
+                        gameOverCount++;
+                    }
                     break;
                 }
                 System.out.println(" ");
             }
         }
+
         double p = (gameOverCount / ITERATIONS) * 100;
-        System.out.println("Chance to collide ON steps #" + N + " is " + p + "%");
+        System.out.println("Chance to collide ON step #" + N + " is " + p + "%");
     }
 
     public static Point step(Point particle) {

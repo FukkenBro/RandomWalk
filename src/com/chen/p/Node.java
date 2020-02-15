@@ -8,6 +8,10 @@ public class Node extends Point {
     public boolean N;
     public boolean S;
     public boolean[] freedom;
+    public Node eN;
+    public Node wN;
+    public Node nN;
+    public Node sN;
 
     public Node(int x, int y, boolean e, boolean w, boolean n, boolean s) {
         super(x, y);
@@ -21,6 +25,8 @@ public class Node extends Point {
     public String getNode() {
         return Arrays.toString(this.getLoc()) + " " + Arrays.toString(freedom);
     }
+
+
 
     public boolean[] getFreedomDimensions() {
         return this.freedom;
